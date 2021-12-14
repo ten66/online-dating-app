@@ -1,4 +1,6 @@
 <template>
+  <h1>{{ $store.state.message }}</h1>
+  <h2>{{ $store.state.users.message }}</h2>
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/message-list">MessageList</router-link>
