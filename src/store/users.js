@@ -2,7 +2,6 @@ import axios from "axios";
 
 const users = {
   state: {
-    message: "Hello Vuex Module!",
     users: [],
   },
   getters: {
@@ -17,7 +16,7 @@ const users = {
   },
   actions: {
     getUsers({commit}){
-      return axios.get('https://randomuser.me/api/?results=1')
+      return axios.get('https://randomuser.me/api/?results=30')
           .then(response => {
             commit('setUsers',response.data)
           })
