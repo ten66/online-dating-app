@@ -1,18 +1,32 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="home" class="p-2">
+    <h3>Now online user list!</h3>
+    <div class="d-flex justify-content-center flex-wrap">
+      <user-card
+      v-for="user in users"
+      :user="user.value"
+      :key="user.id" />
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import UserCard from "../components/user-card.vue"
 
 export default {
-  name: 'Home',
+  name: "home",
   components: {
-    HelloWorld
+    UserCard,
+  },
+  computed : {
+    users(){
+      return this.$store.state.users.users;
+    }
+  },
+  created(){
+    this.$store.dispatch('fetchUsers')
   }
 }
 </script>
+
+
