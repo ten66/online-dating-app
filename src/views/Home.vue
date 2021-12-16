@@ -4,8 +4,8 @@
     <div class="d-flex justify-content-center flex-wrap">
       <user-card
       v-for="user in users"
-      :user="user"
-      :key="user.login.uuid" />
+      :user="user.value"
+      :key="user.id" />
     </div>
   </div>
 </template>
@@ -20,11 +20,11 @@ export default {
   },
   computed : {
     users(){
-      return this.$store.state.users.users.results;
+      return this.$store.state.users.users;
     }
   },
   created(){
-    this.$store.dispatch('getUsers')
+    this.$store.dispatch('fetchUsers')
   }
 }
 </script>
