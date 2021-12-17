@@ -6,14 +6,16 @@
       <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{ user.location.country }}</p>
       <div class="d-flex justify-content-center align-items-center">
         <div class="pe-1">
-          <button class="btn btn-primary"><i class="far fa-envelope"></i> Message</button>
+          <router-link
+          :to="{ name: 'Chat', params: {id: user.login.uuid }}"
+          class="btn btn-primary">
+          <i class="far fa-envelope"></i> Message</router-link>
         </div>
         <div class="ps-1">
           <router-link 
           :to="{ name: 'UserDetail', params: { id: user.login.uuid }}"
           class="btn btn-outline-primary">
-            <i class="fas fa-user"></i> Detail
-          </router-link>
+          <i class="fas fa-user"></i> Detail</router-link>
         </div>
       </div>
     </div>

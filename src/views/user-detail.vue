@@ -35,7 +35,10 @@
               </tbody>
             </table>
             <div class="pb-1">
-              <button class="btn btn-primary"><i class="far fa-envelope"></i> Send Message</button>
+              <router-link
+              :to="{ name: 'Chat', params: {id: $route.params.id }}"
+              class="btn btn-primary">
+              <i class="far fa-envelope"></i> Send Message</router-link>
             </div>
           </div>
         </div>
