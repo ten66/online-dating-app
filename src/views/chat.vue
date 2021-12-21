@@ -9,7 +9,7 @@
         <!-- 自分の送信メッセージ -->
           <div class="d-flex flex-row-reverse align-items-center text-end p-2">
             <div class="col-1">
-              <img src="../assets/user-pic.png" class="user-pic" alt="user picture">
+              <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" class="user-pic" alt="user picture">
             </div>
             <div class="p-1">
               <p class="mb-0">{{ getMessage(message) }}</p>
