@@ -1,6 +1,6 @@
 <template>
   <div id="nav" class="p-2">
-    <router-link to="/">Home</router-link> |
+    <router-link to="/online-dating-app">Home</router-link> |
     <router-link to="/message-list">MessageList</router-link>
   </div>
   <router-view />
