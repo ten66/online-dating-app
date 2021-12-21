@@ -1,7 +1,7 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center">
-    <div class="col-11 col-sm-8 shadow">
-      <div>
+  <div class="d-flex justify-content-center align-items-center message-back">
+    <div class="col-11 col-sm-8 shadow message-list">
+      <div class="messages">
         <div
         v-for="message in messageList"
         :key="message"
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div class="message-input">
         <div class="p-2">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Send Message" aria-label="Send Message" aria-describedby="message-btn" v-model="sendMessage">
@@ -96,6 +96,26 @@ export default {
 </script>
 
 <style scoped>
+
+.message-back {
+  height: 100vh;
+}
+
+.message-list {
+  height: 90%;
+  position: relative;
+}
+
+.messages {
+  height: 90%;
+  overflow: scroll;
+}
+
+.message-input {
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+}
 
 .user-pic {
   width: 100%;
