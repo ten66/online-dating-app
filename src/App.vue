@@ -1,7 +1,7 @@
 <template>
-  <div class="p-2">
+  <!-- <div class="p-2">
     <h1 class="m-0">Online Dating App</h1>
-  </div>
+  </div> -->
   <div id="nav" class="p-2">
     <router-link to="/">Home</router-link> |
     <router-link to="/message-list">MessageList</router-link>

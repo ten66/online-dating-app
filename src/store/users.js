@@ -3,7 +3,6 @@ import axios from "axios";
 const users = {
   state: {
     users: [],
-    selectedData: [],
   },
   getters: {
     getUserById: (state) => (id) => {
