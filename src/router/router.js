@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/online-dating-app',
     name: 'Home',
     component: Home
   },
