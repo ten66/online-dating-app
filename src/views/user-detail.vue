@@ -54,11 +54,6 @@ export default {
       userData: [],
     }
   },
-  // computed: {
-  //   user() {
-  //     return this.$store.getters.getUserById(this.$route.params.id);
-  //   }
-  // }
   created() {
     this.userData = this.$store.getters.getUserById(this.$route.params.id);
   },

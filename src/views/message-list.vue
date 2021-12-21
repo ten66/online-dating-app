@@ -26,7 +26,6 @@ export default {
   data() {
     return {
       messageList: [],
-      // getMessagesUser: [],
     }
   },
   created() {
