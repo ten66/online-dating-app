@@ -12,8 +12,8 @@
               <img src="../assets/user-pic.png" class="user-pic" alt="user picture">
             </div>
             <div class="p-1">
-              <p class="mb-0">{{ message }}</p>
-              <p class="mb-0 date">{{ nowDate }}</p>
+              <p class="mb-0">{{ getMessage(message) }}</p>
+              <p class="mb-0 date">{{ getDate(message) }}</p>
             </div>
           </div>
 
@@ -24,7 +24,7 @@
             </div>
             <div class="p-1">
               <p class="mb-0">hello</p>
-              <p class="mb-0 date">{{ nowDate }}</p>
+              <p class="mb-0 date">{{ getDate(message) }}</p>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
         <div class="p-2">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Send Message" aria-label="Send Message" aria-describedby="message-btn" v-model="sendMessage">
-            <button class="btn btn-outline-secondary" type="button" id="message-btn" @click="sendMessages">Send</button>
+            <button class="btn btn-outline-secondary" type="button" id="message-btn" @click="sendMessages()">Send</button>
           </div>
         </div>
       </div>
@@ -57,7 +57,24 @@ export default {
     this.messages = this.$store.getters.getMessagesById(this.$route.params.id);
   },
   computed: {
-    nowDate() {
+    messageList() {
+      if(!this.messages) return;
+      return this.messages.messages;
+    },
+    
+  },
+  methods: {
+    sendMessages() {
+      if(!this.sendMessage) return;
+      this.getNowDate();
+      this.$store.commit(
+        "setMessages", 
+        {id: this.$route.params.id, message: `${this.sendMessage} ${this.date}`}
+      );
+      this.sendMessage = "";
+      this.messages = this.$store.getters.getMessagesById(this.$route.params.id);
+    },
+    getNowDate() {
       const now = new Date();
       const year = now.getFullYear();
       const month = now.getMonth()+1;
@@ -66,19 +83,13 @@ export default {
       const min = now.getMinutes();
       const sec = now.getSeconds();
 
-      return `${year}/${month}/${date} ${hour}:${min}:${sec}`
+      this.date = `${year}/${month}/${date} ${hour}:${min}:${sec}`;
     },
-    messageList() {
-      if(!this.messages) return;
-      return this.messages.messages;
-    }
-  },
-  methods: {
-    sendMessages() {
-      if(!this.sendMessage) return;
-      this.$store.commit("setMessages", {id: this.$route.params.id, message: this.sendMessage});
-      this.sendMessage = "";
-      this.messages = this.$store.getters.getMessagesById(this.$route.params.id);
+    getMessage(string) {
+      return string.substring(0, string.indexOf(" "));
+    },
+    getDate(string) {
+      return string.substring(string.indexOf(" "));
     }
   }
 }
